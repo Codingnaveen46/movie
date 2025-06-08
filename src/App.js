@@ -5,14 +5,27 @@ import { useEffect } from 'react';
 import './App.css'; 
 import MovieCard from './MovieCard'; 
 
+const api_newkey = {API_URL}; 
 const API_URL = 'https://omdbapi.com?apikey=fe2f6c44'; 
 const App = () => { 
+	const [movies, deleteMovies] = useState([]);
 	const [movies, setMovies] = useState([]); 
 	const [searchTerm, setSearchTerm] = useState([]); 
+	const [searchID , setSearchTerm] = useState([0]);
 	const searchMovies = async (title) => { 
 		const response = await fetch(`${API_URL}&s=${title}`); 
 		const data = await response.json(); 
+		
+		const dataResponse = await fetch('${api_url}${title}); 
+		const dataResponse = response.json(); 
+		
 		setMovies(data.Search); 
+		deleteMovies(data.dataResponse); 
+		
+		// added new commit lines for this file 
+		// line 1 > 25 committed lines 
+		// pr mergers 
+		
 	} 
 	useEffect(() => { 
 		searchMovies('SpiderMan'); 
@@ -46,6 +59,7 @@ const App = () => {
 							<h2>No Movies found</h2> 
 						</div> 
 					) 
+					// this is the comment line 
 			} 
 		</div> 
 	); 
